@@ -1,0 +1,42 @@
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#!/"><i class="fa fa-home"></i> Página Inicial</a>
+        </li>
+        <li class="active">
+            <i class="fa fa-graduation-cap"></i> Lista de Workshops
+        </li>
+    </ol>
+</section>
+
+<div class="box box-default ">
+    <div class="box-header with-border">
+        <h3 class="box-title">Workshops</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-main btn-flat btn-sm" ng-click="onAdd()" title="Adicionar">
+                <i class="fa fa-plus pad-r-5"></i> Adicionar
+            </button>
+
+            <button type="button" class="btn btn-aux btn-flat btn-sm" ng-click="getWorkshopList()" title="Atualizar">
+                <i class="fa fa-refresh"></i>
+            </button>
+            
+            <button type="button" class="btn btn-aux btn-flat btn-sm"  title="Compartilhar link">
+                <i class="fa fa-share-alt"></i>
+            </button>
+            
+            <button type="button" class="btn btn-aux btn-flat btn-sm" >
+                <i class="fa fa-share-square-o pad-r-5"></i> Exportar
+            </button>
+        </div>
+    </div>
+    <div class="box-body">
+        <div ui-grid="grid_options" 
+            ui-grid-auto-resize 
+            ui-grid-resize-columns 
+            ui-grid-pinning 
+            ui-grid-move-columns ></div>
+            </div>
+    </div>
+</div>

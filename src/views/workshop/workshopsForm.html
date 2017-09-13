@@ -1,0 +1,113 @@
+<section>
+    <ol class="breadcrumb">
+        <li>
+            <a href="#!/"><i class="fa fa-home"></i> Página Inicial</a>
+        </li>
+        <li>
+            <a href="#!/workshops"><i class="fa fa-graduation-cap"></i> Lista de Workshops</a>
+        </li>
+        <li class="active">
+            <i class="fa fa-graduation-cap"></i> Formulário de Workshop
+        </li>
+    </ol>
+</section>
+
+
+<div class="box box-default ">
+    <div class="box-header with-border">
+        <h3 class="box-title">Workshop</h3>
+
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-main btn-flat btn-sm" ng-click="onSave()" ng-disabled="!courseForm.$valid" title="Salvar">
+                <i class="fa fa-save pad-r-5"></i> Salvar
+            </button>
+            
+            <button type="button" class="btn btn-aux btn-flat btn-sm"  title="Compartilhar link">
+                <i class="fa fa-share-alt"></i>
+            </button>
+            
+            <button type="button" class="btn btn-aux btn-flat btn-sm" ng-click="onCancel()" title="Voltar">
+                <i class="fa fa-undo pad-r-5"></i> Voltar
+            </button>
+        </div>
+    </div>
+
+    <div class="box-body">
+        <form name="courseForm" class="form-horizontal">
+            <div class="form-group required" ng-class="criticalField(courseForm.name)">
+                <label class="control-label col-md-2">Nome do Workshop:</label>
+                <div class="col-md-5 required">
+                    <input type="text" class="form-control" placeholder="Nome do Workshop" name="name" ng-model="course.name" required>
+                    <span class="help-block" ng-show="criticalShowLabel(courseForm.name)">Campo obrigatório!</span>
+                </div>
+            </div>
+            
+        
+            <div class="form-group" ng-class="criticalField(courseForm.description)">
+                <label class="control-label col-md-2" >Descrição:</label>
+                <div class="col-md-10 required">
+                    <textarea class="form-control" rows="5" placeholder="Breve descrição sobre o Workshop" name="description" ng-model="course.description" required></textarea>
+                    <span class="help-block" ng-show="criticalShowLabel(courseForm.description)">Campo obrigatório!</span>
+                </div>
+            </div>
+        
+
+            <div class="form-group">
+                <div ng-class="criticalField(courseForm.type)">
+                    <label class="control-label col-md-2" >Tipo:</label>
+                    <div class="col-sm-2 required">
+                        <select class="form-control" name="type" ng-model="course.type" required ng-options="type.name for type in typesList">
+                            <option value="" disabled selected>Selecione o tipo</option>
+                        </select>
+                        <span class="help-block" ng-show="criticalShowLabel(courseForm.type)">Campo obrigatório!</span>
+                    </div>
+                </div>
+                
+                <div ng-class="criticalField(courseForm.dateIni)">
+                    <label class="control-label col-md-1" >Período:</label>
+                    <div class="col-md-2 required">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" placeholder="Date e hora" data-provide="datepicker" name="dateIni" ng-model="course.dateIni" required data-date-format="dd/mm/yyyy" data-date-language="pt-BR">
+                            <span class="help-block" ng-show="criticalShowLabel(courseForm.dateIni)">Campo obrigatório!</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div ng-class="criticalField(courseForm.dateEnd)">
+                    <div class="col-md-2 required">
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" placeholder="Date e hora" data-provide="datepicker" name="dateEnd" ng-model="course.dateEnd" required data-date-format="dd/mm/yyyy" data-date-language="pt-BR">
+                            <span class="help-block" ng-show="criticalShowLabel(courseForm.dateEnd)">Campo obrigatório!</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div ng-class="criticalField(courseForm.hours)">
+                    <label class="control-label col-md-1" >Carga horária:</label>
+                    <div class="col-md-2 required">
+                        <input type="text" class="form-control" placeholder="horas" name="hours" ng-model="course.hours" required>
+                        <span class="help-block" ng-show="criticalShowLabel(courseForm.hours)">Campo obrigatório!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Exige anexo:</label>
+                <div class="col-md-1">
+                    <toggle on="Sim" off="Não" name="attachment" ng-model="course.attachment" size="btn-sm"></toggle>
+                </div>
+
+                <label class="control-label col-md-2">Descrição da exigência:</label>
+                <div class="col-md-7">
+                    <textarea class="form-control" rows="5" placeholder="Breve descrição sobre a exigência do anexo" ng-disabled="!course.attachment"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
